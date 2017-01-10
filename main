@@ -1,0 +1,25 @@
+Sub UpdateFamilyBalanceSheet()
+'
+' UpdateFamilyBalanceSheet Macro
+'
+
+'
+'    Dim widthColumn As Single
+'    widthColunm = Selection.Width
+    
+    
+    ActiveSheet.Unprotect
+    ActiveCell.Range("A1:D32").Select
+    Selection.Copy
+    ActiveCell.Offset(0, 4).Range("A1").Select
+    ActiveSheet.Paste
+    ActiveCell.Columns("A:D").EntireColumn.Select
+    Selection.ColumnWidth = 13.86
+    ActiveCell.Offset(0, -8).Columns("A:D").EntireColumn.Select
+    Selection.EntireColumn.Hidden = True
+    ActiveCell.Offset(0, 4).Columns("A").Select
+    Application.CutCopyMode = False
+    Selection.Locked = True
+    Selection.FormulaHidden = False
+    ActiveSheet.Protect DrawingObjects:=True, Contents:=True, Scenarios:=True
+End Sub
